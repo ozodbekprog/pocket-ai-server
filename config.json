@@ -1,0 +1,26 @@
+{
+  "host": "0.0.0.0",
+  "port": 8400,
+  "max_history": 8,
+  "llm": {
+    "provider": "deepseek",
+    "auth_provider": "deepseek",
+    "base_url": "https://api.deepseek.com",
+    "model": "deepseek-flash",
+    "max_tokens": 300,
+    "temperature": 0.6,
+    "timeout": 40
+  },
+  "assistant": {
+    "name": "Pocket",
+    "language": "uz",
+    "system_prompt": "Sen cho'ntak qurilmadagi ovozli yordamchisan. Foydalanuvchi bilan o'zbek tilida gaplashasan; u boshqa tilda gapirsa, o'sha tilda javob ber. Javoblaring qisqa va tabiiy bo'lsin — ular ovoz bilan o'qiladi, shuning uchun markdown, ro'yxat, emoji, sarlavha yoki qavs ichidagi izohlardan foydalanma. Odatda 1-3 gapda javob ber. Aniq bilmagan narsangni to'qib chiqarma, qisqa savol ber. Vaqt yoki joy kerak bo'lsa foydalanuvchidan so'ra."
+  },
+  "stt": {
+    "lang": "uz"
+  },
+  "tts": {
+    "speaker": "dilnavoz",
+    "sample_rate": 24000
+  }
+}

@@ -1,0 +1,35 @@
+worker ishga tushirilmoqda (modellar yuklanmoqda)...
+[worker] silero yuklandi (cuda)
+[transformers] `torch_dtype` is deprecated! Use `dtype` instead!
+Loading weights:   0%|          | 0/587 [00:00<?, ?it/s]Loading weights:  81%|████████▏ | 478/587 [00:00<00:00, 4776.67it/s]Loading weights: 100%|██████████| 587/587 [00:00<00:00, 4683.46it/s]
+[worker] whisper yuklandi
+worker ready=True stage=asr device=cuda err=None
+INFO:     Started server process [19023]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://0.0.0.0:8400 (Press CTRL+C to quit)
+INFO:     127.0.0.1:42654 - "GET /healthz HTTP/1.1" 200 OK
+[transformers] Using `chunk_length_s` is very experimental with seq2seq models. The results will not necessarily be entirely accurate and will have caveats. More information: https://github.com/huggingface/transformers/pull/20104. Ignore this warning with pipeline(..., ignore_warning=True). To use Whisper for long-form transcription, use rather the model's `generate` method directly as the model relies on it's own chunking mechanism (cf. Whisper original paper, section 3.8. Long-form Transcription).
+[transformers] Passing `generation_config` together with generation-related arguments=({'suppress_tokens', 'begin_suppress_tokens'}) is deprecated and will be removed in future versions. Please pass either a `generation_config` object OR all generation parameters explicitly, but not both.
+[transformers] Ignoring clean_up_tokenization_spaces=True for BPE tokenizer WhisperTokenizer. The clean_up_tokenization post-processing step is designed for WordPiece tokenizers and is destructive for BPE (it strips spaces before punctuation). Set clean_up_tokenization_spaces=False to suppress this warning, or set clean_up_tokenization_spaces_for_bpe_even_though_it_will_corrupt_output=True to force cleanup anyway.
+[worker] Traceback (most recent call last):
+  File "/home/tony/Documents/Default Project/pocket-ai-server/stt_tts_worker.py", line 98, in main
+    audio = til.synth(state["silero"], req["text"], speaker, rate, False)
+  File "/home/tony/.fariza/config/opencode/skills/fariza-til/til.py", line 79, in synth
+    audio = model.apply_tts(text=chunk, speaker=speaker, sample_rate=sample_rate)
+  File "<torch_package_0>.multi_acc_v3_package.py", line 445, in apply_tts
+    sentences, clean_sentences, break_lens, prosody_rates, prosody_pitches, sp_ids = self.prepare_tts_model_input(input_text,
+                                                                                     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+                                                                                                                  ssml=ssml,
+                                                                                                                  ^^^^^^^^^^
+                                                                                                                  speaker_ids=speaker_ids)
+                                                                                                                  ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<torch_package_0>.multi_acc_v3_package.py", line 152, in prepare_tts_model_input
+    clean_text_list = self.process_simple_text(text)
+  File "<torch_package_0>.multi_acc_v3_package.py", line 182, in process_simple_text
+    raise ValueError
+ValueError
+
+INFO:     127.0.0.1:48188 - "POST /voice HTTP/1.1" 502 Bad Gateway
+[transformers] Using `chunk_length_s` is very experimental with seq2seq models. The results will not necessarily be entirely accurate and will have caveats. More information: https://github.com/huggingface/transformers/pull/20104. Ignore this warning with pipeline(..., ignore_warning=True). To use Whisper for long-form transcription, use rather the model's `generate` method directly as the model relies on it's own chunking mechanism (cf. Whisper original paper, section 3.8. Long-form Transcription).
+INFO:     127.0.0.1:33734 - "POST /voice/raw HTTP/1.1" 200 OK
